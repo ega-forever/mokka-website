@@ -6,6 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'website';
   currentYear = new Date().getFullYear();
+
+  scrollTo(el: HTMLElement) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
 }

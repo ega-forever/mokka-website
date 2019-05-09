@@ -4,20 +4,30 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
   <h5 class="my-0 mr-md-auto font-weight-normal">Mokka RSM</h5>
   <nav class="my-2 my-md-0 mr-md-3">
-    <a class="p-2 text-dark" href="#">About</a>
-    <a class="p-2 text-dark" href="#">Features</a>
-    <a class="p-2 text-dark" href="#">Live example</a>
-    <a class="p-2 text-dark" href="#">References</a>
+    <a class="p-2 text-dark" href="#about" (click)="scrollTo(about)">About</a>
+    <a class="p-2 text-dark" href="#features" (click)="scrollTo(features)">Features</a>
+    <a class="p-2 text-dark" href="#example" (click)="scrollTo(example)">Live example</a>
+    <a class="p-2 text-dark" href="#references" (click)="scrollTo(references)">References</a>
+    <a class="p-2 text-dark" href="https://github.com/ega-forever/mokka">GitHub</a>
   </nav>
 </div>
 
 
 <div class="container">
 
-  <app-about></app-about>
-  <app-features></app-features>
-  <app-example></app-example>
+  <div #about>
+    <app-about></app-about>
+  </div>
+  <div #features>
+    <app-features></app-features>
+  </div>
+  <div #example>
+    <app-example></app-example>
+  </div>
 
+  <div #references>
+    <app-references></app-references>
+  </div>
 
 
   <footer class="pt-4 my-md-5 border-top text-center">
@@ -28,8 +38,6 @@
     </div>
   </footer>
 </div>
-
-
 
 
 <router-outlet></router-outlet>

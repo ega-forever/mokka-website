@@ -7,13 +7,15 @@ import { AboutComponent } from './about/about.component';
 import { FeaturesComponent } from './features/features.component';
 import { ExampleComponent } from './example/example.component';
 import {FormsModule} from "@angular/forms";
+import { ReferencesComponent } from './references/references.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
     FeaturesComponent,
-    ExampleComponent
+    ExampleComponent,
+    ReferencesComponent
   ],
   imports: [
     BrowserModule,
