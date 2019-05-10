@@ -89,7 +89,7 @@ export class ExampleComponent implements OnInit {
 
       worker.addEventListener('message', (e) => {
         if (e.data.type === 'packet')
-          this.workers[e.data.args[0]].postMessage({type: 'packet', args: [e.data.args[1]]})
+          this.workers[e.data.args[0]].postMessage({type: 'packet', args: [e.data.args[1]]});
         if (e.data.type === 'info')
           this.workerStates[index] = new StateModel(e.data.args[0].index, e.data.args[0].hash, e.data.args[0].index.term);
         if (e.data.type === 'log') {
@@ -105,6 +105,8 @@ export class ExampleComponent implements OnInit {
       return worker;
     });
 
+    this.log = new LogModel("", "", 0, this.workers[0]);
+    this.getLog = new LogModel("", "", 0, this.workers[0]);
   }
 
 
