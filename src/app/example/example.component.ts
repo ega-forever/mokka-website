@@ -1,10 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {SettingsModel} from "./models/SettingsModel";
-import * as nacl from 'tweetnacl';
-import {Buffer} from 'buffer';
-import {StateModel} from "./models/StateModel";
-import {LogModel} from "./models/LogModel";
-import {EntryModel} from "./models/EntryModel";
+import { Component, OnInit } from '@angular/core';
+import { SettingsModel } from './models/SettingsModel';
+import { StateModel } from './models/StateModel';
+import { LogModel } from './models/LogModel';
+import { EntryModel } from './models/EntryModel';
+import crypto from 'crypto-browserify';
 
 @Component({
   selector: 'app-example',
@@ -17,13 +16,12 @@ export class ExampleComponent implements OnInit {
   settings: SettingsModel = new SettingsModel(
     3,
     {
-      min: 150,
-      max: 200
+      min: 100,
+      max: 150
     },
-    200,
+    50,
     {
-      heartbeat: 200,
-      timeout: 200
+      heartbeat: 100
     });
   workers: Worker[];
   workerStates: StateModel[];
@@ -71,8 +69,14 @@ export class ExampleComponent implements OnInit {
 
   private prepareKeys() {
     this.keys = [];
-    for (let i = 0; i < this.settings.count; i++)
-      this.keys.push(Buffer.from(nacl.sign.keyPair().secretKey).toString('hex'));
+    for (let i = 0; i < this.settings.count; i++){
+      const node = crypto.createECDH('secp256k1');
+      node.generateKeys();
+      this.keys.push({
+        privateKey: node.getPrivateKey().toString('hex'),
+        publicKey: node.getPublicKey('hex', 'compressed')
+      });
+    }
     console.log(this.keys)
   }
 
