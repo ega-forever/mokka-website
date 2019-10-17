@@ -8,8 +8,7 @@ export class SettingsModel {
     },
     public heartbeat: number,
     public gossip: {
-      heartbeat: number,
-      timeout: number
+      heartbeat: number
     }
   ) {  }
 

@@ -10,6 +10,11 @@ module.exports = {
     vm: true,
     stream: true
   },
+  resolve: {
+    alias: {
+      "crypto": "crypto-browserify"
+    }
+  }
   /*plugins: [
     new CopyPlugin([
         {

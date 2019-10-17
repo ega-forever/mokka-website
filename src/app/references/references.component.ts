@@ -8,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class ReferencesComponent implements OnInit {
 
   public references: { title: string, url: string }[] = [
-    {title: "Egor Zuev. Mokka: RSM for open networks ", url: "https://arxiv.org/ftp/arxiv/papers/1901/1901.08435.pdf"},
+    {title: "Egor Zuev. Mokka: consensus for open networks ", url: "https://arxiv.org/ftp/arxiv/papers/1901/1901.08435.pdf"},
     {
       title: "Diego Ongaro and John Ousterhout. In Search of an Understandable Consensus Algorithm ",
       url: "https://raft.github.io/raft.pdf"

@@ -21,23 +21,22 @@ class BrowserMokka extends Mokka.Mokka {
 const init = (index, keys, settings) => {
 
   window.mokka = new BrowserMokka({
-    address: `${index}/${keys[index].substring(64, 128)}`,
+    address: `${index}/${keys[index].publicKey}`,
     electionMax: settings.election.max,
     electionMin: settings.election.min,
-    gossipHeartbeat: 200,
-    gossipTimeout: 200,
+    gossipHeartbeat: settings.gossip.heartbeat,
     heartbeat: settings.heartbeat,
     logger: {
       info: (text) => console.log(`worker#${index} ${text}`),
       error: (text) => console.log(`worker#${index} ${text}`),
       trace: (text) => console.log(`worker#${index} ${text}`)
     },
-    privateKey: keys[index]
+    privateKey: keys[index].privateKey
   });
 
   for (let i = 0; i < keys.length; i++)
     if (i !== index)
-      window.mokka.nodeApi.join(`${i}/${keys[i].substring(64, 128)}`);
+      window.mokka.nodeApi.join(`${i}/${keys[i].publicKey}`);
 
   window.mokka.connect();
 
@@ -60,8 +59,10 @@ self.addEventListener('message', async function (e) {
   if (e.data.type === 'init')
     return init(...e.data.args);
 
-  if (e.data.type === 'packet')
-    window.mokka.emit('data', e.data.args[0]);
+  if (e.data.type === 'packet') {
+    const packet = new TextDecoder("utf-8").decode(new Uint8Array(e.data.args[0]));
+    window.mokka.emit('data', packet);
+  }
 
   if (e.data.type === 'push') {
     window.mokka.logApi.push(...e.data.args);
