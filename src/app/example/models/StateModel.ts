@@ -1,8 +1,7 @@
 export class StateModel {
 
   constructor(
-    public index: number,
-  public hash: string,
+  public state: string,
   public term: number
 ) {  }
 
