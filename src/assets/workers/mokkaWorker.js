@@ -24,12 +24,11 @@ const init = (index, keys, settings) => {
     address: `${index}/${keys[index].publicKey}`,
     heartbeat: settings.heartbeat,
     electionTimeout: settings.electionTimeout,
-    proofExpiration: settings.proofExpiration, // todo move to settings
+    proofExpiration: settings.sessionExpiration, // todo move to settings
     logger: {
       info: (text) => console.log(`worker#${index} ${text}`),
       error: (text) => console.log(`worker#${index} ${text}`),
-      // trace: (text) => console.log(`worker#${index} ${text}`)
-      trace: (text) => null
+      trace: (text) => console.log(`worker#${index} ${text}`)
     },
     privateKey: keys[index].privateKey
   });
@@ -41,6 +40,7 @@ const init = (index, keys, settings) => {
   window.mokka.connect();
 
   window.mokka.on('state', () => {
+    window.mokka.logger.info(`state: ${window.mokka.state}`);
     self.postMessage({type: 'info', args: [{state: window.mokka.state, term: window.mokka.term}]});
   });
 
