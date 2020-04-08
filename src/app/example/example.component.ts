@@ -13,7 +13,7 @@ import _ from 'lodash';
 })
 export class ExampleComponent implements OnInit {
 
-  settings: SettingsModel = new SettingsModel(3, 500, 60000, 1000);
+  settings: SettingsModel = new SettingsModel(3, 50, 10000, 150);
   workers: Worker[];
   workerStates: StateModel[];
 
