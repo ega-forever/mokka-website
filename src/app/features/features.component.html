@@ -4,19 +4,20 @@
 
 <div class="row">
   <div class="card-deck mb-3 text-center col-md-6 offset-md-6">
-    <p class="lead">Mokka use asymmetric cryptography standard for
-      running validation over each state mutation (i.e. voting).
-    Furthermore, Mokka is resistant to network splits thanks to Schnorr musig simplified scheme.</p>
+    <p class="lead">Mokka use asymmetric cryptography (Schnorr musig simplified scheme) for
+      running validation over each state mutation (i.e. voting) and any authorized action.
+      So, the consensus can be reached only by known peers and only in quorum.</p>
   </div>
 
   <div class="card-deck mb-3 col-md-6 offset-md-6">
     <div class="card mb-4 shadow-sm">
       <div class="card-body">
         <ul class="mt-3 mb-4">
-          <li>strong network split resistant properties</li>
+          <li>network split resistant properties</li>
           <li>strong security and state mutation validation</li>
           <li>compact and easy expandable</li>
           <li>strict signature size, and as a result - packet size (thanks to musig)</li>
+          <li>non-anonymous state mutation (the signature will tell, which nodes participated in reaching quorum)</li>
         </ul>
       </div>
     </div>

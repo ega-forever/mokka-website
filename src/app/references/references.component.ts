@@ -9,7 +9,7 @@ export class ReferencesComponent implements OnInit {
 
   public references: { title: string, url: string }[] = [
     {
-      title: 'Egor Zuev. Mokka: consensus for open networks ',
+      title: 'Egor Zuev. Mokka: BFT consensus ',
       url: 'https://arxiv.org/ftp/arxiv/papers/1901/1901.08435.pdf'
     },
     {
