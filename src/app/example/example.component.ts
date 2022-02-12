@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsModel } from './models/SettingsModel';
 import { StateModel } from './models/StateModel';
+// @ts-ignore
 import crypto from 'crypto-browserify';
 import NodeStates from 'mokka/dist/consensus/constants/NodeStates';
+// @ts-ignore
 import _ from 'lodash';
 
 @Component({
@@ -13,11 +15,14 @@ import _ from 'lodash';
 })
 export class ExampleComponent implements OnInit {
 
-  settings: SettingsModel = new SettingsModel(3, 50, 10000, 150);
-  workers: Worker[];
-  workerStates: StateModel[];
+  settings: SettingsModel = new SettingsModel('CFT', 3, 50, 10000, 150);
+  workers: Worker[] = [];
+  workerStates: StateModel[] = [];
 
-  private keys = [];
+  private keys: Array<{
+    privateKey: string,
+    publicKey: string
+  }> = [];
 
   ngOnInit() {
   }
